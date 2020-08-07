@@ -62,7 +62,7 @@ function loadUsers() {
         data[name] = value;
         console.log(data.id);
       });
-
+      //DELETE AJAX//
       $.ajax({
         url: "http://test.eko.eu/user/" + data.id,
         type: type,

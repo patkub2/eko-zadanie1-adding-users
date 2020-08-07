@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <title>App</title>
+    <style>
+      .user {
+        display: flex;
+        background: #f4f4f4;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      .user ul {
+        list-style: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Add User</h2>
+      <form action="send.php" method="POST" class="send">
+        <div class="form-group">
+          <label for="email">First name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="first_name"
+            placeholder="First name"
+            name="first_name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="pwd">Last Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="last_name"
+            placeholder="Last Name"
+            name="last_name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="pwd">Postal Code:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="postal_code"
+            placeholder="Postal Code"
+            name="postal_code"
+          />
+        </div>
+        <div class="form-group">
+          <label for="pwd">Street:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="street"
+            placeholder="Street"
+            name="street"
+          />
+        </div>
+        <div class="form-group">
+          <label for="pwd">City:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="city"
+            placeholder="City"
+            name="city"
+          />
+        </div>
+        <div class="form-group">
+          <label for="pwd">Age:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="age"
+            placeholder="Age"
+            name="age"
+          />
+        </div>
+        <input type="submit" class="btn btn-primary mb-2" value="Submit" />
+      </form>
+      <hr />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="addUser.js"></script>
+    </div>
+
+    <button id="button">Load GitHub Users</button>
+    <br /><br />
+    <h1>Github Users</h1>
+    <div id="users"></div>
+
+    <script src="showUsers.js"></script>
+  </body>
+</html>
