@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Add</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Add User</h2>
+      <form action="contact.php" method="POST" class="ajax">
+        <div class="form-group">
+          <label for="email">First name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="first_name"
+            placeholder="First name"
+            name="first_name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="pwd">Last Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="last_name"
+            placeholder="Last Name"
+            name="last_name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="pwd">Postal Code:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="postal_code"
+            placeholder="Postal Code"
+            name="postal_code"
+          />
+        </div>
+        <div class="form-group">
+          <label for="pwd">Street:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="street"
+            placeholder="Street"
+            name="street"
+          />
+        </div>
+        <div class="form-group">
+          <label for="pwd">City:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="city"
+            placeholder="City"
+            name="city"
+          />
+        </div>
+        <div class="form-group">
+          <label for="pwd">Age:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="age"
+            placeholder="Age"
+            name="age"
+          />
+        </div>
+        <input type="submit" class="btn btn-primary mb-2" value="Submit" />
+      </form>
+      <hr />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script>
+        $("form.ajax").on("submit", function () {
+          var that = $(this),
+            url = that.attr("action"),
+            type = that.attr("method"),
+            data = {};
+          that.find("[name]").each(function (index, value) {
+            var that = $(this),
+              name = that.attr("name"),
+              value = that.val();
+
+            data[name] = value;
+          });
+
+          $.ajax({
+            url: "http://test.eko.eu/user",
+            type: type,
+            data: data,
+            success: function (response) {
+              alert("success");
+            },
+          });
+          return false;
+        });
+      </script>
+    </div>
+  </body>
+</html>
