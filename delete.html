@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    
+    
+      <div class="container">
+        <h2>Add User</h2>
+        <form id="postForm"
+        action="http://test.eko.eu/user/10"
+        method="POST">
+        <input name="_method" type="hidden" value="delete" />
+         
+          </div>
+          <input type="submit" class="btn btn-primary mb-2" value="Submit" />
+        </form>
+      </div>
+    <script>
+    function SubForm (){
+      $.ajax({
+          url: '/Person/Edit/@Model.Id/',
+          type: 'post',
+          data: $('#myForm').serialize(),
+          success: function(){
+              alert("worked");
+          }
+      });
+  }</script>
+  </body>
+</html>

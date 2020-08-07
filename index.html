@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <title>Ajax 3 - External API</title>
+    <style>
+      .user {
+        display: flex;
+        background: #f4f4f4;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      .user ul {
+        list-style: none;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="button">Load GitHub Users</button>
+    <br /><br />
+    <h1>Github Users</h1>
+    <div id="users"></div>
+
+    <script>
+      document.getElementById("button").addEventListener("click", loadUsers);
+
+      // Load Github Users
+      function loadUsers() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://test.eko.eu/", true);
+
+        xhr.onload = function () {
+          if (this.status == 200) {
+            var users = JSON.parse(this.responseText);
+            console.log(users.users);
+            var output = "";
+            for (var i in users.users) {
+              output +=
+                '<div class="user">' +
+                "<ul>" +
+                "<li>Name: " +
+                users.users[i].first_name +
+                "</li>" +
+                "<li>Last name: " +
+                users.users[i].last_name +
+                "</li>" +
+                "<li>Postal Code: " +
+                users.users[i].postal_code +
+                "</li>" +
+                "<li>Street: " +
+                users.users[i].street +
+                "</li>" +
+                "<li>City: " +
+                users.users[i].city +
+                "</li>" +
+                "</ul>" +
+                "<button id=delete" +
+                i +
+                ">Delete</button>" +
+                "<button id=edit" +
+                i +
+                ">Edit</button>" +
+                "</div>";
+            }
+            document.getElementById("users").innerHTML = output;
+          }
+        };
+
+        xhr.send();
+      }
+    </script>
+  </body>
+</html>

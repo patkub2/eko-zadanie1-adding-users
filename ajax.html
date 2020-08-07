@@ -4,59 +4,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Ajax 3 - External API</title>
-    <style>
-      .user {
-        display: flex;
-        background: #f4f4f4;
-        padding: 10px;
-        margin-bottom: 10px;
-      }
-
-      .user ul {
-        list-style: none;
-      }
-    </style>
+    <title>Ajax 4 - AJAX & PHP Forms</title>
   </head>
   <body>
-    <button id="button">Load GitHub Users</button>
-    <br /><br />
-    <h1>Github Users</h1>
-    <div id="users"></div>
+    <h1>AJAX POST FORM</h1>
+    <form id="postForm">
+      <input type="text" name="firstname" id="firstname" />
+      <input type="text" name="lastname" id="lastname" />
+      <input type="text" name="postalcode" id="postalcode" />
+      <input type="text" name="street" id="street" />
+      <input type="text" name="city" id="city" />
+      <input type="submit" value="Submit" />
+    </form>
 
     <script>
-      document.getElementById("button").addEventListener("click", loadUsers);
+      document.getElementById("postForm").addEventListener("submit", postName);
 
-      // Load Github Users
-      function loadUsers() {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "http://test.eko.eu", true);
-
-        xhr.onload = function () {
-          if (this.status == 200) {
-            var users = JSON.parse(this.responseText);
-            console.log(users);
-
-            var output = "";
-            for (var i in users) {
-              output +=
-                '<div class="user">' +
-                "<ul>" +
-                "<li>Name: " +
-                users[i].first_name +
-                "</li>" +
-                "<li>Login: " +
-                users[i].login +
-                "</li>" +
-                "</ul>" +
-                "</div>";
-            }
-
-            document.getElementById("users").innerHTML = output;
-          }
+      function postName(e) {
+        e.preventDefault();
+        var firstname = document.getElementById("firstname").value;
+        var lastname = document.getElementById("lastname").value;
+        var postalcode = document.getElementById("postalcode").value;
+        var street = document.getElementById("street").value;
+        var city = document.getElementById("city").value;
+        var params = {
+          first_name: firstname,
+          last_name: lastname,
+          postal_code: postalcode,
+          street: street,
+          city: city,
         };
 
-        xhr.send();
+        console.log(params);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "process.php", true);
+        xhr.setRequestHeader(
+          "Content-type",
+          "application/x-www-form-urlencoded"
+        );
+
+        xhr.onload = function () {
+          console.log(this.responseText);
+        };
+        console.log(params);
+        xhr.send(params);
       }
     </script>
   </body>

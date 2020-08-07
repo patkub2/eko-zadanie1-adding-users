@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <title>Delete</title>
+    <style>
+      .user {
+        display: flex;
+        background: #f4f4f4;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      .user ul {
+        list-style: none;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="optionLoad.js">
+      //////Load options///////
+    </script>
+
+    User Id:<select name="userid" id="userid"></select>
+
+    <button id="button">Load Users</button>
+    <br /><br />
+    <h1>Users</h1>
+    <div id="users"></div>
+
+    <script src="showUser.js">
+      ////////////////////Show User////////////////
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $("form.ajax").on("submit", function () {
+        console.log("data");
+
+        return false;
+      });
+    </script>
+  </body>
+</html>
