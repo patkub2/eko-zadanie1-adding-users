@@ -13,12 +13,22 @@ body {
   max-width: 900px;
   color: #000000;
 }
+footer {
+  background: #ffffff;
+  margin: 20px auto;
+  padding: 20px;
+  width: 90%;
+  border-radius: 40px;
+  max-width: 900px;
+  color: #000000;
+  text-align: center;
+}
 .navbar {
   padding: 10px 20px;
   text-align: center;
   background: #ffffff;
   border-radius: 20px;
-  font-size: 32px;
+  font-size: 28px;
 }
 .navbar-m {
   padding: 10px 20px;
