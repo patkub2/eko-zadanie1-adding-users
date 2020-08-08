@@ -1,4 +1,4 @@
-// Load Users
+// Load Users to option field
 function loadOneUser() {
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "http://test.eko.eu/", true);
@@ -8,9 +8,9 @@ function loadOneUser() {
       var users = JSON.parse(this.responseText);
       var output = "";
       for (var i in users.users) {
-        output += `<option value="` + i + `">` + i + `</option>`;
+        output += `<option value="` + i + `">` + i + `</option>`; //add options to option field
       }
-      document.getElementById("userid").innerHTML = output;
+      document.getElementById("userid").innerHTML = output; //replace user id select element with id
     }
   };
 

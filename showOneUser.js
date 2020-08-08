@@ -1,5 +1,5 @@
 document.getElementById("loaduser").addEventListener("click", loadUsers);
-
+// load users
 function loadUsers() {
   var userid = document.getElementById("userid").value;
   var xhr = new XMLHttpRequest();
@@ -79,7 +79,7 @@ function loadUsers() {
      </form></td>` +
         "</tr>";
 
-      document.getElementById("users").innerHTML = outpul;
+      document.getElementById("users").innerHTML = outpul; // input one user table elements to table users
     }
     ////////////   D E L E T E //////////////
     $("form.ajax").on("submit", function () {

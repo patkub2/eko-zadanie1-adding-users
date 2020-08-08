@@ -2,7 +2,7 @@ document.getElementById("button").addEventListener("click", loadUsers);
 
 window.onload = loadOneUser;
 
-// Load Github Users
+// Load Users
 var id = "";
 function loadUsers() {
   var xhr = new XMLHttpRequest();
@@ -11,7 +11,7 @@ function loadUsers() {
   xhr.onload = function () {
     if (this.status == 200) {
       var users = JSON.parse(this.responseText);
-
+      // Create table
       var output = `<tr>
       <th>First name</th>
       <th>Last name</th>
@@ -43,7 +43,7 @@ function loadUsers() {
           "<td>" +
           users.users[i].age +
           "</td>" +
-          //////////////////////////////////
+          ////////// Form to delete a user/////////////
           `<td><form action="contact.php" method="POST" class="ajax">
              <input name="_method" type="hidden" value="delete" />
              <input value="` +
@@ -53,7 +53,7 @@ function loadUsers() {
 
           <button type="submit"  value="edit" class="button" ><img src="./icons/bin.svg" class="icon" alt="no img" /></button>
          </form></td>` +
-          ////////////////////////////////////////////
+          /////////////////// Form to edit a user/////////////////////
           `<td><form action="edit.php" method="POST" class="ajaxx">
          <input name="_method" type="hidden" class="table" value="delete" />
          <input value="` +
@@ -84,7 +84,7 @@ function loadUsers() {
      </form></td>` +
           "</tr>";
       }
-      document.getElementById("users").innerHTML = output;
+      document.getElementById("users").innerHTML = output; // input table elements to table users
     }
     ////////////   D E L E T E //////////////
     $("form.ajax").on("submit", function () {
@@ -99,7 +99,7 @@ function loadUsers() {
 
         data[name] = value;
       });
-      //DELETE AJAX//
+      //////////DELETE AJAX//////////
       $.ajax({
         url: "http://test.eko.eu/user/" + data.id,
         type: type,
@@ -128,7 +128,7 @@ function loadUsers() {
 
         data[name] = value;
       });
-      //EDIT AJAX//
+      //////////EDIT AJAX//////////
       $.ajax({
         url: "http://test.eko.eu/user/" + data.id,
         type: type,
