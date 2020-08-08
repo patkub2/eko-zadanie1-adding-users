@@ -10,7 +10,6 @@ function loadUsers() {
     if (this.status == 200) {
       var users = JSON.parse(this.responseText);
 
-      console.log(users.users);
       var output = "";
       for (var i in users.users) {
         id = users.users[i].id;
@@ -60,7 +59,6 @@ function loadUsers() {
           value = that.val();
 
         data[name] = value;
-        console.log(data.id);
       });
       //DELETE AJAX//
       $.ajax({

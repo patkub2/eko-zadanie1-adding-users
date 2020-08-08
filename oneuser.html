@@ -47,13 +47,13 @@
 
     User Id:<select name="userid" id="userid"></select>
 
-    <button id="button">Load Users</button>
+    <button id="loaduser">Load Users</button>
     <br /><br />
     <h1>Users</h1>
     <div id="users"></div>
 
     <script>
-      document.getElementById("button").addEventListener("click", loadUsers);
+      document.getElementById("loaduser").addEventListener("click", loadUsers);
 
       function loadUsers() {
         var userid = document.getElementById("userid").value;

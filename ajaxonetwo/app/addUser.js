@@ -9,7 +9,6 @@ $("form.send").on("submit", function () {
       value = that.val();
 
     data[name] = value;
-    console.log(data);
   });
 
   $.ajax({
@@ -17,7 +16,12 @@ $("form.send").on("submit", function () {
     type: type,
     data: data,
     success: function (response) {
-      alert("success2");
+      document.getElementById("alert").style.display = "block";
+      document.getElementById("alert").style.color = "green";
+      document.getElementById("alert").style.border = " 2px solid green";
+      document.getElementById("closebtn").style.color = "green";
+      document.getElementById("action").innerHTML = "Added";
+      document.getElementById("button").click();
       document.getElementById("first_name").value = "";
       document.getElementById("last_name").value = "";
       document.getElementById("postal_code").value = "";

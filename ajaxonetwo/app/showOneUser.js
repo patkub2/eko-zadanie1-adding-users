@@ -1,18 +1,14 @@
-document.getElementById("button").addEventListener("click", loadUsers);
+document.getElementById("loaduser").addEventListener("click", loadUsers);
 
-window.onload = loadOneUser;
-
-// Load Github Users
-var id = "";
 function loadUsers() {
+  var userid = document.getElementById("userid").value;
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", "http://test.eko.eu/", true);
+  xhr.open("GET", "http://test.eko.eu", true);
 
   xhr.onload = function () {
     if (this.status == 200) {
       var users = JSON.parse(this.responseText);
-
-      var output = `<tr>
+      var outpul = `<tr>
       <th>First name</th>
       <th>Last name</th>
       <th>Postal code</th>
@@ -22,69 +18,68 @@ function loadUsers() {
       <th></th>
       <th></th>
     </tr>`;
-      for (var i in users.users) {
-        id = users.users[i].id;
-        output +=
-          `<td > ` +
-          users.users[i].first_name +
-          "</td>" +
-          "<td>" +
-          users.users[i].last_name +
-          "</td>" +
-          "<td>" +
-          users.users[i].postal_code +
-          "</td>" +
-          "<td>" +
-          users.users[i].street +
-          "</td>" +
-          "<td>" +
-          users.users[i].city +
-          "</td>" +
-          "<td>" +
-          users.users[i].age +
-          "</td>" +
-          //////////////////////////////////
-          `<td><form action="contact.php" method="POST" class="ajax">
+      id = users.users[userid].id;
+      outpul +=
+        `<td > ` +
+        users.users[userid].first_name +
+        "</td>" +
+        "<td>" +
+        users.users[userid].last_name +
+        "</td>" +
+        "<td>" +
+        users.users[userid].postal_code +
+        "</td>" +
+        "<td>" +
+        users.users[userid].street +
+        "</td>" +
+        "<td>" +
+        users.users[userid].city +
+        "</td>" +
+        "<td>" +
+        users.users[userid].age +
+        "</td>" +
+        //////////////////////////////////
+        `<td><form action="contact.php" method="POST" class="ajax">
              <input name="_method" type="hidden" value="delete" />
              <input value="` +
-          users.users[i].id +
-          `" type="hidden" name="id" />
+        users.users[userid].id +
+        `" type="hidden" name="id" />
 
 
           <button type="submit"  value="edit" class="button" ><img src="./icons/bin.svg" class="icon" alt="no img" /></button>
          </form></td>` +
-          ////////////////////////////////////////////
-          `<td><form action="edit.php" method="POST" class="ajaxx">
+        ////////////////////////////////////////////
+        `<td><form action="edit.php" method="POST" class="ajaxx">
          <input name="_method" type="hidden" class="table" value="delete" />
          <input value="` +
-          users.users[i].id +
-          `" type="hidden" name="id" />
+        users.users[userid].id +
+        `" type="hidden" name="id" />
          <input value="` +
-          users.users[i].first_name +
-          `" type="hidden" name="first_name" />
+        users.users[userid].first_name +
+        `" type="hidden" name="first_name" />
          <input value="` +
-          users.users[i].last_name +
-          `" type="hidden" name="last_name" />
+        users.users[userid].last_name +
+        `" type="hidden" name="last_name" />
          <input value="` +
-          users.users[i].postal_code +
-          `" type="hidden" name="postal_code" />
+        users.users[userid].postal_code +
+        `" type="hidden" name="postal_code" />
          <input value="` +
-          users.users[i].street +
-          `" type="hidden" name="street" />
+        users.users[userid].street +
+        `" type="hidden" name="street" />
          <input value="` +
-          users.users[i].city +
-          `" type="hidden" name="city" />
+        users.users[userid].city +
+        `" type="hidden" name="city" />
          <input value="` +
-          users.users[i].age +
-          `" type="hidden" name="age" />
+        users.users[userid].age +
+        `" type="hidden" name="age" />
           
 
 
          <button type="submit"  value="edit" class="button" ><img src="./icons/edit.svg" class="icon" alt="no img" /></button>
      </form></td>` +
-          "</tr>";
-      }
-      document.getElementById("users").innerHTML = output;
+        "</tr>";
+
+      document.getElementById("users").innerHTML = outpul;
     }
     ////////////   D E L E T E //////////////
     $("form.ajax").on("submit", function () {
@@ -110,7 +105,8 @@ function loadUsers() {
           document.getElementById("alert").style.border = " 2px solid red";
           document.getElementById("closebtn").style.color = "red";
           document.getElementById("action").innerHTML = "Deleted";
-          document.getElementById("button").click();
+          document.getElementById("users").innerHTML = "";
+          loadOneUser;
         },
       });
       return false;
@@ -134,7 +130,6 @@ function loadUsers() {
         type: type,
         data: data,
         success: function (response) {
-          document.getElementById("button").click();
           document.getElementById("first_name").value = data.first_name;
           document.getElementById("last_name").value = data.last_name;
           document.getElementById("postal_code").value = data.postal_code;
