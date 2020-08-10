@@ -93,6 +93,7 @@ function loadUsers() {
           value = that.val();
 
         data[name] = value;
+        console.log(data);
       });
       //DELETE AJAX//
       $.ajax({
@@ -106,7 +107,7 @@ function loadUsers() {
           document.getElementById("closebtn").style.color = "red";
           document.getElementById("action").innerHTML = "Deleted";
           document.getElementById("users").innerHTML = "";
-          loadOneUser;
+          loadOneUser();
         },
       });
       return false;

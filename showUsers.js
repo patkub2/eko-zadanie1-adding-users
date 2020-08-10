@@ -54,7 +54,7 @@ function loadUsers() {
           <button type="submit"  value="edit" class="button" ><img src="./icons/bin.svg" class="icon" alt="no img" /></button>
          </form></td>` +
           /////////////////// Form to edit a user/////////////////////
-          `<td><form action="edit.php" method="POST" class="ajaxx">
+          `<td><form action="edit.php" method="POST" class="editajax">
          <input name="_method" type="hidden" class="table" value="delete" />
          <input value="` +
           users.users[i].id +
@@ -89,7 +89,6 @@ function loadUsers() {
     ////////////   D E L E T E //////////////
     $("form.ajax").on("submit", function () {
       var that = $(this),
-        url = that.attr("action"),
         type = that.attr("method"),
         data = {};
       that.find("[name]").each(function (index, value) {
@@ -111,17 +110,16 @@ function loadUsers() {
           document.getElementById("closebtn").style.color = "red";
           document.getElementById("action").innerHTML = "Deleted";
           document.getElementById("button").click();
+          loadOneUser();
         },
       });
       return false;
     });
     ////////////   E D I T  //////////////
-    $("form.ajaxx").on("submit", function () {
+    $("form.editajax").on("submit", function () {
       var that = $(this),
-        url = that.attr("action"),
-        type = that.attr("method"),
         data = {};
-      that.find("[name]").each(function (index, value) {
+      that.find("[name]").each(function (value) {
         var that = $(this),
           name = that.attr("name"),
           value = that.val();
@@ -130,10 +128,7 @@ function loadUsers() {
       });
       //////////EDIT AJAX//////////
       $.ajax({
-        url: "http://test.eko.eu/user/" + data.id,
-        type: type,
-        data: data,
-        success: function (response) {
+        success: function () {
           document.getElementById("button").click();
           document.getElementById("first_name").value = data.first_name;
           document.getElementById("last_name").value = data.last_name;
@@ -141,6 +136,8 @@ function loadUsers() {
           document.getElementById("street").value = data.street;
           document.getElementById("city").value = data.city;
           document.getElementById("age").value = data.age;
+          document.getElementById("id_del").value = data.id;
+          document.getElementById("submit_add").value = "Edit";
         },
       });
       return false;
