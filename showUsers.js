@@ -128,6 +128,8 @@ function loadUsers() {
       });
       //////////EDIT AJAX//////////
       $.ajax({
+        url: "http://test.eko.eu",
+        type: "POST",
         success: function () {
           document.getElementById("button").click();
           document.getElementById("first_name").value = data.first_name;

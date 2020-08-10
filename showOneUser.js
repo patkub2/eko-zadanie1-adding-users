@@ -109,7 +109,6 @@ function loadUsers() {
           loadOneUser();
         },
       });
-      return false;
     });
     ////////////   E D I T  //////////////
     $("form.ajaxx").on("submit", function () {
@@ -124,6 +123,9 @@ function loadUsers() {
       });
       //EDIT AJAX//
       $.ajax({
+        url: "http://test.eko.eu",
+        type: "POST",
+        data: data,
         success: function () {
           document.getElementById("first_name").value = data.first_name;
           document.getElementById("last_name").value = data.last_name;
