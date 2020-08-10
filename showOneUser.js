@@ -93,7 +93,6 @@ function loadUsers() {
           value = that.val();
 
         data[name] = value;
-        console.log(data);
       });
       //DELETE AJAX//
       $.ajax({
@@ -115,10 +114,8 @@ function loadUsers() {
     ////////////   E D I T  //////////////
     $("form.ajaxx").on("submit", function () {
       var that = $(this),
-        url = that.attr("action"),
-        type = that.attr("method"),
         data = {};
-      that.find("[name]").each(function (index, value) {
+      that.find("[name]").each(function (value) {
         var that = $(this),
           name = that.attr("name"),
           value = that.val();
@@ -127,16 +124,15 @@ function loadUsers() {
       });
       //EDIT AJAX//
       $.ajax({
-        url: "http://test.eko.eu/user/" + data.id,
-        type: type,
-        data: data,
-        success: function (response) {
+        success: function () {
           document.getElementById("first_name").value = data.first_name;
           document.getElementById("last_name").value = data.last_name;
           document.getElementById("postal_code").value = data.postal_code;
           document.getElementById("street").value = data.street;
           document.getElementById("city").value = data.city;
           document.getElementById("age").value = data.age;
+          document.getElementById("id_del").value = data.id;
+          document.getElementById("submit_add").value = "Edit";
         },
       });
       return false;

@@ -44,6 +44,8 @@ $("form.send").on("submit", function () {
         document.getElementById("alert").style.border = " 2px solid orange";
         document.getElementById("closebtn").style.color = "orange";
         document.getElementById("action").innerHTML = "Edited";
+
+        document.getElementById("id_del").value = "";
         loadOneUser();
       },
     });
